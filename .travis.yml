@@ -1,0 +1,11 @@
+language: generic
+
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t barisozcanli/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true barisozcanli/docker-react npm run test
